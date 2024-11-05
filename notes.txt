@@ -1,0 +1,9 @@
+1) Create initialization of node prjoect
+npm init -y
+
+
+2) npm i express
+
+3) run index.js file simply   (type node index.js)
+
+4) add nodemon for local development environment (type npm i nodemon -D)
