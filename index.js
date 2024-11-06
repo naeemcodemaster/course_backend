@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 5000;
 
 
 app.get('/',(req,res)=>{
-    res.send('Hi this is endpoint ');
+    res.send('Hi this is endpoint updated');
+})
+
+app.post('/register',(req,res)=>{
+    res.send('hi')
 })
 
 app.listen(PORT,()=>{

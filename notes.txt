@@ -19,3 +19,4 @@ npm init -y
 
 
 6) npm i dotenv   (for .env file and will create environment variables in our application)
+
