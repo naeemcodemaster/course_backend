@@ -46,7 +46,7 @@ app.post('/register',async(req,res)=>{
 
        const user = new User({username,email,password});
        await user.save();
-       res.status(201).json({message:"Account has been created"})
+       res.status(201).json({message:"Account has been created..."})
 
 
     } catch (error) {
