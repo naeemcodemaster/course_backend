@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db.js');
 const User = require('./models/User.models.js')
-
+const bcrypt = require('bcryptjs')
 
 dotenv.config();
 const app = express();
@@ -15,8 +15,8 @@ app.use(express.json());
 
 
 const PORT = process.env.PORT || 5000;
-
-
+// console.log("PORT IS ",PORT);
+// console.log(this);
 
 app.get('/',(req,res)=>{
     // res.send('Hi this is endpoint');
@@ -60,9 +60,34 @@ app.post('/register',async(req,res)=>{
 })
 
 
-app.post('/login',(req,res)=>{
-    console.log("Login API");
+app.post('/login',async(req,res)=>{
+    // console.log(req.body);
+    // return res.status(200).json({message:"Login success"});
+    const {email,password} = req.body;
+
+    try {
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(401).json({message:"Invalid Credentials"})
+        }
+
+        const isMatch = await bcrypt.compare(password,user.password);
+        
+        if(!isMatch){
+            console.log("Not matched");
+            return res.status(401).message({message:"Invalid Credentials"});
+        }
+
     
+        return res.status(201).json({message:isMatch});
+
+
+
+    } catch (error) {
+        
+    }
+
+
 })
 
 

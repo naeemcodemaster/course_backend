@@ -23,4 +23,4 @@ npm init -y
 7) npm i mongoose  for connection with mongodb atlas
 
 
-8)
+8)npm i bcryptjs   (for password hashing or encryption)
